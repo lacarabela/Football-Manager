@@ -17,43 +17,31 @@ squad_rawdata = squad_rawdata_list[0]
 # calculating scores for 4-2-3-1 Gengen Press
 # Sweeper Keeper on Defend Score
 squad_rawdata['sk_green'] = ((
-    (squad_rawdata['Cmd'] * 5) +
-    (squad_rawdata['Kic'] * 5) +
-    (squad_rawdata['1v1'] * 5) +
     (squad_rawdata['Ref'] * 5) +
-    (squad_rawdata['Ant'] * 5) +
-    (squad_rawdata['Cnt'] * 5) +
-    (squad_rawdata['Pos'] * 5) +
-    (squad_rawdata['Agi'] * 5)) / 40
+    (squad_rawdata['Agi'] * 5)) / 10
     )
 
 squad_rawdata['sk_blue'] = ((
+    (squad_rawdata['Acc'] * 2.5) +
     (squad_rawdata['Aer'] * 2.5) +
-    (squad_rawdata['Fir'] * 2.5) +
     (squad_rawdata['Han'] * 2.5) +
-    (squad_rawdata['Pas'] * 2.5) +
+    (squad_rawdata['Cmd'] * 2.5) +
+    (squad_rawdata['Kic'] * 2.5) +
+    (squad_rawdata['1v1'] * 2.5) +
+    (squad_rawdata['Pas'] * 2.5) + 
     (squad_rawdata['TRO'] * 2.5) +
-    (squad_rawdata['Thr'] * 2.5) +
-    (squad_rawdata['Cmp'] * 2.5) + 
+    (squad_rawdata['Ant'] * 2.5) +
+    (squad_rawdata['Cmp'] * 2.5) +
+    (squad_rawdata['Cnt'] * 2.5) +
     (squad_rawdata['Dec'] * 2.5) +
-    (squad_rawdata['Vis'] * 2.5) +
-    (squad_rawdata['Acc'] * 2.5)) / 25
+    (squad_rawdata['Pos'] * 2.5) +
+    (squad_rawdata['Vis'] * 2.5)) / 35
     )
 
 squad_rawdata['sk_white'] = ((
-    (squad_rawdata['Agg']) +
-    (squad_rawdata['Bra']) +
-    (squad_rawdata['Det']) +
-    (squad_rawdata['Fla']) +
-    (squad_rawdata['Ldr']) +
-    (squad_rawdata['OtB']) +
-    (squad_rawdata['Tea']) +
-    (squad_rawdata['Wor']) +
-    (squad_rawdata['Bal']) +
-    (squad_rawdata['Jum']) +
-    (squad_rawdata['Pac']) +
-    (squad_rawdata['Sta']) +
-    (squad_rawdata['Str'])) / 13
+    (squad_rawdata['Com']) +
+    (squad_rawdata['Fir']) +
+    (squad_rawdata['Thr'])) / 3
     )
 
 squad_rawdata['sk'] = (((squad_rawdata['sk_green']) + (squad_rawdata['sk_blue']) + (squad_rawdata['sk_white'])) / 3)
