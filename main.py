@@ -60,18 +60,46 @@ squad_rawdata.sk = squad_rawdata.sk.round(1)
 
 # Right Wing Back on Attack Score
 squad_rawdata['rwb_green'] = ((
-
-))
+    (squad_rawdata['Cro'] * 5) +
+    (squad_rawdata['Dri'] * 5) +
+    (squad_rawdata['Tck'] * 5) +
+    (squad_rawdata['Tec'] * 5) +
+    (squad_rawdata['Otb'] * 5) +
+    (squad_rawdata['Tea'] * 5) +
+    (squad_rawdata['Wor'] * 5) +
+    (squad_rawdata['Pac'] * 5) +
+    (squad_rawdata['Sta'] * 5) +
+    (squad_rawdata['Acc'] * 5)) / 50
+)
 
 squad_rawdata['rwb_blue'] = ((
-
-))
+    (squad_rawdata['Fir'] * 2.5) +
+    (squad_rawdata['Mar'] * 2.5) +
+    (squad_rawdata['Pas'] * 2.5) +
+    (squad_rawdata['Ant'] * 2.5) +
+    (squad_rawdata['Cnt'] * 2.5) +
+    (squad_rawdata['Dec'] * 2.5) +
+    (squad_rawdata['Fla'] * 2.5) +
+    (squad_rawdata['Pos'] * 2.5) +
+    (squad_rawdata['Agi'] * 2.5) +
+    (squad_rawdata['Bal'] * 2.5)) / 25
+)
 
 squad_rawdata['rwb_white'] = ((
+    (squad_rawdata['Fin']) +
+    (squad_rawdata['Hea']) +
+    (squad_rawdata['Lon']) +
+    (squad_rawdata['Agg']) +
+    (squad_rawdata['Bra']) +
+    (squad_rawdata['Cmp']) +
+    (squad_rawdata['Det']) +
+    (squad_rawdata['Lea']) +
+    (squad_rawdata['Vis']) +
+    (squad_rawdata['Jum']) +
+    (squad_rawdata['Str'])) / 11
+    )
 
-))
-
-squad_rawdata['rwb'] = ((squad_rawdata['rwb_green']) + (squad_rawdata['rwb_blue']) + (squad_rawdata['rwb_white']))
+squad_rawdata['rwb'] = ((squad_rawdata['rwb_green']) + (squad_rawdata['rwb_blue']) + (squad_rawdata['rwb_white']) / 3)
 squad_rawdata.rwb = squad_rawdata.rwb.round(1)
 
 # Central Defender on Defend Score
@@ -87,7 +115,7 @@ squad_rawdata['cd_white'] = ((
 
 ))
 
-squad_rawdata['cd'] = ((squad_rawdata['cd_green']) + (squad_rawdata['cd_blue']) + (squad_rawdata['cd_white']))
+squad_rawdata['cd'] = ((squad_rawdata['cd_green']) + (squad_rawdata['cd_blue']) + (squad_rawdata['cd_white']) / 3)
 squad_rawdata.cd = squad_rawdata.cd.round(1)
 
 # Left Wing Back on Defend Score
