@@ -27,14 +27,35 @@ squad_rawdata['sk_green'] = ((
 )
 
 squad_rawdata['sk_blue'] = ((
-    (squad_rawdata['Aer'] * 2.5)
-))
+    (squad_rawdata['Aer'] * 2.5) +
+    (squad_rawdata['Fir'] * 2.5) +
+    (squad_rawdata['Han'] * 2.5) +
+    (squad_rawdata['Pas'] * 2.5) +
+    (squad_rawdata['Tro'] * 2.5) +
+    (squad_rawdata['Thr'] * 2.5) +
+    (squad_rawdata['Cmp'] * 2.5) + 
+    (squad_rawdata['Dec'] * 2.5) +
+    (squad_rawdata['Vis'] * 2.5) +
+    (squad_rawdata['Acc'] * 2.5)) / 25
+    )
 
 squad_rawdata['sk_white'] = ((
+    (squad_rawdata['Agg']) +
+    (squad_rawdata['Bra']) +
+    (squad_rawdata['Det']) +
+    (squad_rawdata['Fla']) +
+    (squad_rawdata['Ldr']) +
+    (squad_rawdata['Otb']) +
+    (squad_rawdata['Tea']) +
+    (squad_rawdata['Wor']) +
+    (squad_rawdata['Bal']) +
+    (squad_rawdata['Jum']) +
+    (squad_rawdata['Pac']) +
+    (squad_rawdata['Sta']) +
+    (squad_rawdata['Str'])) / 13
+    )
 
-))
-
-squad_rawdata['sk'] = ((squad_rawdata['sk_green']) + (squad_rawdata['sk_blue']) + (squad_rawdata['sk_white']))
+squad_rawdata['sk'] = ((squad_rawdata['sk_green']) + (squad_rawdata['sk_blue']) + (squad_rawdata['sk_white']) / 3)
 squad_rawdata.sk = squad_rawdata.sk.round(1)
 
 # Right Wing Back on Attack Score
@@ -206,7 +227,7 @@ squad_rawdata['pf_white'] = ((
     (squad_rawdata['Jum'])) / 14
     )
 
-squad_rawdata['pf'] = ((squad_rawdata['pf_green']) + (squad_rawdata['pf_blue']) + (squad_rawdata['pf_white']))
+squad_rawdata['pf'] = ((squad_rawdata['pf_green']) + (squad_rawdata['pf_blue']) + (squad_rawdata['pf_white']) / 3)
 squad_rawdata.pf = squad_rawdata.pf.round(1)
 
 squad_rawdata
@@ -238,7 +259,7 @@ def generate_html(dataframe: pd.DataFrame):
 
     return html
 
-squad = squad_rawdata[]
+squad = squad_rawdata[['Inf','Name','Age','Club','Transfer Value','Wage','Nat','Position','Personality','Media Handling','Left Foot', 'Right Foot','Spd','Jum','Str','Work','Height','sk','lwb','cd','rwb','bwm','dlp','lw','ap','rw','pf']]
 
 # Creating and randomizing the title of the final viewable html file
 filename = str(uuid.uuid4()) + ".html"
