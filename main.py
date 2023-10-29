@@ -39,7 +39,7 @@ squad_rawdata['sk_blue'] = ((
     )
 
 squad_rawdata['sk_white'] = ((
-    (squad_rawdata['Com']) +
+    (squad_rawdata['Cmp']) +
     (squad_rawdata['Fir']) +
     (squad_rawdata['Thr'])) / 3
     )
@@ -48,7 +48,7 @@ squad_rawdata['sk'] = (((squad_rawdata['sk_green']) + (squad_rawdata['sk_blue'])
 squad_rawdata.sk = squad_rawdata.sk.round(1)
 
 # Wing Back Scores
-squad_rawdata['rwb_green'] = ((
+squad_rawdata['wb_green'] = ((
     (squad_rawdata['OtB'] * 5) +
     (squad_rawdata['Wor'] * 5) +
     (squad_rawdata['Acc'] * 5) +
@@ -56,7 +56,7 @@ squad_rawdata['rwb_green'] = ((
     (squad_rawdata['Sta'] * 5)) / 25
     )
 
-squad_rawdata['rwb_blue'] = ((
+squad_rawdata['wb_blue'] = ((
     (squad_rawdata['Dri'] * 2.5) +
     (squad_rawdata['Mar'] * 2.5) +
     (squad_rawdata['Pas'] * 2.5) +
@@ -68,7 +68,7 @@ squad_rawdata['rwb_blue'] = ((
     (squad_rawdata['Agi'] * 2.5)) / 22.5
     )
 
-squad_rawdata['rwb_white'] = ((
+squad_rawdata['wb_white'] = ((
     (squad_rawdata['Cro']) +
     (squad_rawdata['Pos']) +
     (squad_rawdata['Tea']) +
