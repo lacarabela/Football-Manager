@@ -1,11 +1,12 @@
 import pandas as pd
-import glob
 import os
 import uuid
 
 # Finding most recent generated squad file from FM24 in html
-file_list = glob.glob(os.path.join(r'C:/Users/maldo/Desktop/Football_Manager py/Football-Manager', '*'))
+directory = r'C:/Users/maldo/OneDrive/Desktop/Football_Manager py/Football-Manager/html files'
+file_list = [os.path.join(directory, filename) for filename in os.listdir(directory) if filename.endswith(".html")]
 latest_file = max(file_list, key=os.path.getctime)
+print(latest_file)
 
 # Read html squad file
 squad_rawdata_list = pd.read_html(latest_file, header=0, encoding="utf-8", keep_default_na=False)
@@ -31,7 +32,7 @@ squad_rawdata['sk_blue'] = ((
     (squad_rawdata['Fir'] * 2.5) +
     (squad_rawdata['Han'] * 2.5) +
     (squad_rawdata['Pas'] * 2.5) +
-    (squad_rawdata['Tro'] * 2.5) +
+    (squad_rawdata['TRO'] * 2.5) +
     (squad_rawdata['Thr'] * 2.5) +
     (squad_rawdata['Cmp'] * 2.5) + 
     (squad_rawdata['Dec'] * 2.5) +
@@ -45,7 +46,7 @@ squad_rawdata['sk_white'] = ((
     (squad_rawdata['Det']) +
     (squad_rawdata['Fla']) +
     (squad_rawdata['Ldr']) +
-    (squad_rawdata['Otb']) +
+    (squad_rawdata['OtB']) +
     (squad_rawdata['Tea']) +
     (squad_rawdata['Wor']) +
     (squad_rawdata['Bal']) +
@@ -64,7 +65,7 @@ squad_rawdata['rwb_green'] = ((
     (squad_rawdata['Dri'] * 5) +
     (squad_rawdata['Tck'] * 5) +
     (squad_rawdata['Tec'] * 5) +
-    (squad_rawdata['Otb'] * 5) +
+    (squad_rawdata['OtB'] * 5) +
     (squad_rawdata['Tea'] * 5) +
     (squad_rawdata['Wor'] * 5) +
     (squad_rawdata['Pac'] * 5) +
@@ -93,7 +94,7 @@ squad_rawdata['rwb_white'] = ((
     (squad_rawdata['Bra']) +
     (squad_rawdata['Cmp']) +
     (squad_rawdata['Det']) +
-    (squad_rawdata['Lea']) +
+    (squad_rawdata['Ldr']) +
     (squad_rawdata['Vis']) +
     (squad_rawdata['Jum']) +
     (squad_rawdata['Str'])) / 11
@@ -132,7 +133,7 @@ squad_rawdata['cd_white'] = ((
     (squad_rawdata['Tec']) +
     (squad_rawdata['Det']) +
     (squad_rawdata['Fla']) +
-    (squad_rawdata['Lea']) +
+    (squad_rawdata['Ldr']) +
     (squad_rawdata['Vis']) +
     (squad_rawdata['Wor']) +
     (squad_rawdata['Acc']) +
@@ -140,7 +141,7 @@ squad_rawdata['cd_white'] = ((
     (squad_rawdata['Bal']) +
     (squad_rawdata['Sta']) +
     (squad_rawdata['Tea']) +
-    (squad_rawdata['Otb'])) / 18
+    (squad_rawdata['OtB'])) / 18
     )
 
 squad_rawdata['cd'] = (((squad_rawdata['cd_green']) + (squad_rawdata['cd_blue']) + (squad_rawdata['cd_white'])) / 3)
@@ -166,7 +167,7 @@ squad_rawdata['lwb_blue'] = ((
     (squad_rawdata['Tec'] * 2.5) +
     (squad_rawdata['Cnt'] * 2.5) +
     (squad_rawdata['Dec'] * 2.5) +
-    (squad_rawdata['Otb'] * 2.5) +
+    (squad_rawdata['OtB'] * 2.5) +
     (squad_rawdata['Agi'] * 2.5) +
     (squad_rawdata['Pac'] * 2.5) +
     (squad_rawdata['Bal'] * 2.5)) / 27.5
@@ -181,7 +182,7 @@ squad_rawdata['lwb_white'] = ((
     (squad_rawdata['Cmp']) +
     (squad_rawdata['Det']) +
     (squad_rawdata['Fla']) +
-    (squad_rawdata['Lea']) +
+    (squad_rawdata['Ldr']) +
     (squad_rawdata['Vis']) +
     (squad_rawdata['Jum']) +
     (squad_rawdata['Str'])) / 12
@@ -222,8 +223,8 @@ squad_rawdata['bwm_white'] = ((
     (squad_rawdata['Cmp']) +
     (squad_rawdata['Dec']) +
     (squad_rawdata['Det']) +
-    (squad_rawdata['Lea']) +
-    (squad_rawdata['Otb']) +
+    (squad_rawdata['Ldr']) +
+    (squad_rawdata['OtB']) +
     (squad_rawdata['Vis']) +
     (squad_rawdata['Acc']) +
     (squad_rawdata['Bal']) +
@@ -232,7 +233,7 @@ squad_rawdata['bwm_white'] = ((
     )
 
 
-squad_rawdata['bwm'] = ((squad_rawdata['bwm_green']) + (squad_rawdata['bwm_blue']) + (squad_rawdata['bwm_white']) / 3)
+squad_rawdata['bwm'] = (((squad_rawdata['bwm_green']) + (squad_rawdata['bwm_blue']) + (squad_rawdata['bwm_white'])) / 3)
 squad_rawdata.bwm = squad_rawdata.bwm.round(1)
 
 # Deep Lying Playmaker on Support Score
@@ -248,7 +249,7 @@ squad_rawdata['dlp_green'] = ((
 
 squad_rawdata['dlp_blue'] = ((
     (squad_rawdata['Ant'] * 2.5) +
-    (squad_rawdata['Otb'] * 2.5) +
+    (squad_rawdata['OtB'] * 2.5) +
     (squad_rawdata['Pos'] * 2.5) +
     (squad_rawdata['Bal'] * 2.5)) / 10
     )
@@ -266,7 +267,7 @@ squad_rawdata['dlp_white'] = ((
     (squad_rawdata['Cnt']) +
     (squad_rawdata['Det']) +
     (squad_rawdata['Fla']) +
-    (squad_rawdata['Lea']) +
+    (squad_rawdata['Ldr']) +
     (squad_rawdata['Wor']) +
     (squad_rawdata['Acc']) +
     (squad_rawdata['Agi']) +
@@ -290,7 +291,7 @@ squad_rawdata['rw_green'] = ((
 
 squad_rawdata['rw_blue'] = ((
     (squad_rawdata['Fir'] * 2.5) +
-    (squad_rawdata['Otb'] * 2.5) +
+    (squad_rawdata['OtB'] * 2.5) +
     (squad_rawdata['Pas'] * 2.5) +
     (squad_rawdata['Bal'] * 2.5) +
     (squad_rawdata['Pac'] * 2.5) +
@@ -312,7 +313,7 @@ squad_rawdata['rw_white'] = ((
     (squad_rawdata['Dec']) +
     (squad_rawdata['Det']) +
     (squad_rawdata['Fla']) +
-    (squad_rawdata['Lea']) +
+    (squad_rawdata['Ldr']) +
     (squad_rawdata['Pos']) +
     (squad_rawdata['Tea']) +
     (squad_rawdata['Vis']) +
@@ -329,7 +330,7 @@ squad_rawdata['ap_green'] = ((
     (squad_rawdata['Pas'] * 5) +
     (squad_rawdata['Tec'] * 5) +
     (squad_rawdata['Cmp'] * 5) +
-    (squad_rawdata['Otb'] * 5) +
+    (squad_rawdata['OtB'] * 5) +
     (squad_rawdata['Tea'] * 5) +
     (squad_rawdata['Vis'] * 5) +
     (squad_rawdata['Dec'] * 5)) / 40
@@ -354,7 +355,7 @@ squad_rawdata['ap_white'] = ((
     (squad_rawdata['Bra']) +
     (squad_rawdata['Det']) +
     (squad_rawdata['Cnt']) +
-    (squad_rawdata['Lea']) +
+    (squad_rawdata['Ldr']) +
     (squad_rawdata['Pos']) +
     (squad_rawdata['Wor']) +
     (squad_rawdata['Bal']) +
@@ -378,7 +379,7 @@ squad_rawdata['lw_green'] = ((
 
 squad_rawdata['lw_blue'] = ((
     (squad_rawdata['Fir'] * 2.5) +
-    (squad_rawdata['Otb'] * 2.5) +
+    (squad_rawdata['OtB'] * 2.5) +
     (squad_rawdata['Pas'] * 2.5) +
     (squad_rawdata['Ant'] * 2.5) +
     (squad_rawdata['Bal'] * 2.5) +
@@ -395,19 +396,17 @@ squad_rawdata['lw_white'] = (( # FINISH
     (squad_rawdata['Mar']) +
     (squad_rawdata['Tck']) +
     (squad_rawdata['Agg']) +
-    (squad_rawdata['Ant']) +
     (squad_rawdata['Bra']) +
     (squad_rawdata['Cmp']) +
     (squad_rawdata['Cnt']) +
     (squad_rawdata['Dec']) +
     (squad_rawdata['Det']) +
-    (squad_rawdata['Fla']) +
-    (squad_rawdata['Lea']) +
+    (squad_rawdata['Ldr']) +
     (squad_rawdata['Pos']) +
     (squad_rawdata['Tea']) +
     (squad_rawdata['Vis']) +
     (squad_rawdata['Jum']) +
-    (squad_rawdata['Str'])) / 19
+    (squad_rawdata['Str'])) / 17
     )
 
 squad_rawdata['lw'] = (((squad_rawdata['lw_green']) + (squad_rawdata['lw_blue']) + (squad_rawdata['lw_white'])) / 3)
@@ -418,7 +417,7 @@ squad_rawdata['pf_green'] = ((
     (squad_rawdata['Agg'] * 5) +
     (squad_rawdata['Ant'] * 5) +
     (squad_rawdata['Bra'] * 5) +
-    (squad_rawdata['Otb'] * 5) +
+    (squad_rawdata['OtB'] * 5) +
     (squad_rawdata['Tea'] * 5) + 
     (squad_rawdata['Wor'] * 5) +   
     (squad_rawdata['Acc'] * 5) +
@@ -457,6 +456,10 @@ squad_rawdata['pf_white'] = ((
 squad_rawdata['pf'] = (((squad_rawdata['pf_green']) + (squad_rawdata['pf_blue']) + (squad_rawdata['pf_white'])) / 3)
 squad_rawdata.pf = squad_rawdata.pf.round(1)
 
+# Generating basic values for Speed and Work Rate to look at depending on the positions necessities
+squad_rawdata['Speed'] = ( squad_rawdata['Pac'] + squad_rawdata['Acc'] ) / 2
+squad_rawdata['WorkRate'] = ( squad_rawdata['Wor'] + squad_rawdata['Sta'] ) / 2
+
 squad_rawdata
 
 def generate_html(dataframe: pd.DataFrame):
@@ -486,10 +489,10 @@ def generate_html(dataframe: pd.DataFrame):
 
     return html
 
-squad = squad_rawdata[['Inf','Name','Age','Club','Transfer Value','Wage','Nat','Position','Personality','Media Handling','Left Foot', 'Right Foot','Spd','Jum','Str','Work','Height','sk','lwb','cd','rwb','bwm','dlp','lw','ap','rw','pf']]
+squad = squad_rawdata[['Inf','Name','Age','Club','Transfer Value','Salary','Nat','Position','Personality','Media Handling','Left Foot', 'Right Foot','Speed','Jum','Str','WorkRate','Height','sk','lwb','cd','rwb','bwm','dlp','lw','ap','rw','pf']]
 
 # Creating and randomizing the title of the final viewable html file
 filename = str(uuid.uuid4()) + ".html"
 html = generate_html(squad)
 open(filename, "w", encoding="utf-8").write(html)
-os_filename = (r'C:/Users/maldo/Desktop/Football_Manager py/Football-Manager' + filename)
+os_filename = (r'C:/Users/maldo/OneDrive/Desktop/Football_Manager py/Football-Manager/Results' + filename)
