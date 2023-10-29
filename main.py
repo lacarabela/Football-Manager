@@ -104,34 +104,90 @@ squad_rawdata.rwb = squad_rawdata.rwb.round(1)
 
 # Central Defender on Defend Score
 squad_rawdata['cd_green'] = ((
-
-))
+    (squad_rawdata['Hea'] * 5) +
+    (squad_rawdata['Mar'] * 5) +
+    (squad_rawdata['Tck'] * 5) +
+    (squad_rawdata['Pos'] * 5) +
+    (squad_rawdata['Jum'] * 5) +
+    (squad_rawdata['Str'] * 5)) / 30
+)
 
 squad_rawdata['cd_blue'] = ((
-
-))
+    (squad_rawdata['Agg'] * 2.5) +
+    (squad_rawdata['Ant'] * 2.5) +
+    (squad_rawdata['Bra'] * 2.5) +
+    (squad_rawdata['Cmp'] * 2.5) +
+    (squad_rawdata['Cnt'] * 2.5) +
+    (squad_rawdata['Dec'] * 2.5) +
+    (squad_rawdata['Pac'] * 2.5)) / 17.5
+)
 
 squad_rawdata['cd_white'] = ((
-
-))
+    (squad_rawdata['Cro']) +
+    (squad_rawdata['Dri']) +
+    (squad_rawdata['Fin']) +
+    (squad_rawdata['Fir']) +
+    (squad_rawdata['Lon']) +
+    (squad_rawdata['Pas']) +
+    (squad_rawdata['Tec']) +
+    (squad_rawdata['Det']) +
+    (squad_rawdata['Fla']) +
+    (squad_rawdata['Lea']) +
+    (squad_rawdata['Vis']) +
+    (squad_rawdata['Wor']) +
+    (squad_rawdata['Acc']) +
+    (squad_rawdata['Agi']) +
+    (squad_rawdata['Bal']) +
+    (squad_rawdata['Sta']) +
+    (squad_rawdata['Tea']) +
+    (squad_rawdata['Otb'])) / 18
+    )
 
 squad_rawdata['cd'] = ((squad_rawdata['cd_green']) + (squad_rawdata['cd_blue']) + (squad_rawdata['cd_white']) / 3)
 squad_rawdata.cd = squad_rawdata.cd.round(1)
 
 # Left Wing Back on Defend Score
 squad_rawdata['lwb_green'] = ((
-
-))
+    (squad_rawdata['Mar'] * 5) +
+    (squad_rawdata['Tck'] * 5) +
+    (squad_rawdata['Ant'] * 5) +
+    (squad_rawdata['Pos'] * 5) +
+    (squad_rawdata['Tea'] * 5) +
+    (squad_rawdata['Wor'] * 5) +
+    (squad_rawdata['Acc'] * 5) +
+    (squad_rawdata['Sta'] * 5)) / 40
+)
 
 squad_rawdata['lwb_blue'] = ((
-
-))
+    (squad_rawdata['Cro'] * 2.5) +
+    (squad_rawdata['Dri'] * 2.5) +
+    (squad_rawdata['Fir'] * 2.5) +
+    (squad_rawdata['Pas'] * 2.5) +
+    (squad_rawdata['Tec'] * 2.5) +
+    (squad_rawdata['Cnt'] * 2.5) +
+    (squad_rawdata['Dec'] * 2.5) +
+    (squad_rawdata['Otb'] * 2.5) +
+    (squad_rawdata['Agi'] * 2.5) +
+    (squad_rawdata['Pac'] * 2.5) +
+    (squad_rawdata['Bal'] * 2.5)) / 27.5
+)
 
 squad_rawdata['lwb_white'] = ((
+    (squad_rawdata['Fin']) +
+    (squad_rawdata['Hea']) +
+    (squad_rawdata['Lon']) +
+    (squad_rawdata['Agg']) +
+    (squad_rawdata['Bra']) +
+    (squad_rawdata['Cmp']) +
+    (squad_rawdata['Det']) +
+    (squad_rawdata['Fla']) +
+    (squad_rawdata['Lea']) +
+    (squad_rawdata['Vis']) +
+    (squad_rawdata['Jum']) +
+    (squad_rawdata['Str'])) / 12
+    )
 
-))
-
-squad_rawdata['lwb'] = ((squad_rawdata['lwb_green']) + (squad_rawdata['lwb_blue']) + (squad_rawdata['lwb_white']))
+squad_rawdata['lwb'] = ((squad_rawdata['lwb_green']) + (squad_rawdata['lwb_blue']) + (squad_rawdata['lwb_white']) / 3)
 squad_rawdata.lwb = squad_rawdata.lwb.round(1)
 
 # Ball Winning Midfielder on Defend Score
