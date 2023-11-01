@@ -37,7 +37,6 @@ def browse_file():
     if file_path:
         analyze = tk.messagebox.askyesno("Analyze File", f"Do you want to analyze {file_path}?")
         if analyze:
-            print("Analyzing...")
             label.config(text=f"Selected file: {file_path}")
             result_filepath = analyze_file(file_path)
             print("Analysis complete")
@@ -298,6 +297,9 @@ def analyze_file(input_file_path):
     print(f"Analysis results saved to {filepath}")
     return filepath
 
+def close_window():
+    root.destroy()
+
 # Creating main window
 root = tk.Tk()
 root.title("FM24 Analysis Tool")
@@ -314,6 +316,12 @@ label.grid(row=0, column=0, pady=10, sticky="nsew")
 
 # Make browse_button a child of frame
 browse_button = tk.Button(frame, text="Browse HTML File", command=browse_file)
-browse_button.grid(row=1, column=0)  # No need for padx and pady for the button itself
+browse_button.grid(row=1, column=0) 
+
+bottom_frame = tk.Frame(root)
+bottom_frame.pack(side=tk.BOTTOM,  fill=tk.X, pady=10)
+
+exit_button = tk.Button(bottom_frame, text="EXIT", command=close_window)
+exit_button.pack(side=tk.BOTTOM, pady=5)
 
 root.mainloop()
