@@ -50,6 +50,9 @@ def browse_file():
                 print(result_filepath)
 
 def analyze_file(input_file_path):
+    weight_key = 5 # stats in which are key to a specific position
+    weight_pref = 2.5 # preferred stats which are not unimportant but not key for a position 
+
     # Read html squad file
     squad_rawdata_list = pd.read_html(input_file_path, header=0, encoding="utf-8", keep_default_na=False)
 
@@ -59,31 +62,31 @@ def analyze_file(input_file_path):
     # calculating scores for 4-2-3-1 Gengen Press
     # Sweeper Keeper on Defend Score
     squad_rawdata['sk_green'] = ((
-        (squad_rawdata['Ref'] * 5) +
-        (squad_rawdata['Agi'] * 5)) / 10
+        (squad_rawdata['Ref'] * weight_key) +
+        (squad_rawdata['Agi'] * weight_key)) / 10 # 2 * 5
         )
 
     squad_rawdata['sk_blue'] = ((
-        (squad_rawdata['Acc'] * 2.5) +
-        (squad_rawdata['Aer'] * 2.5) +
-        (squad_rawdata['Han'] * 2.5) +
-        (squad_rawdata['Cmd'] * 2.5) +
-        (squad_rawdata['Kic'] * 2.5) +
-        (squad_rawdata['1v1'] * 2.5) +
-        (squad_rawdata['Pas'] * 2.5) + 
-        (squad_rawdata['TRO'] * 2.5) +
-        (squad_rawdata['Ant'] * 2.5) +
-        (squad_rawdata['Cmp'] * 2.5) +
-        (squad_rawdata['Cnt'] * 2.5) +
-        (squad_rawdata['Dec'] * 2.5) +
-        (squad_rawdata['Pos'] * 2.5) +
-        (squad_rawdata['Vis'] * 2.5)) / 35
+        (squad_rawdata['Acc'] * weight_pref) +
+        (squad_rawdata['Aer'] * weight_pref) +
+        (squad_rawdata['Han'] * weight_pref) +
+        (squad_rawdata['Cmd'] * weight_pref) +
+        (squad_rawdata['Kic'] * weight_pref) +
+        (squad_rawdata['1v1'] * weight_pref) +
+        (squad_rawdata['Pas'] * weight_pref) + 
+        (squad_rawdata['TRO'] * weight_pref) +
+        (squad_rawdata['Ant'] * weight_pref) +
+        (squad_rawdata['Cmp'] * weight_pref) +
+        (squad_rawdata['Cnt'] * weight_pref) +
+        (squad_rawdata['Dec'] * weight_pref) +
+        (squad_rawdata['Pos'] * weight_pref) +
+        (squad_rawdata['Vis'] * weight_pref)) / 35 # 2.5 * 14
         )
 
     squad_rawdata['sk_white'] = ((
         (squad_rawdata['Cmp']) +
         (squad_rawdata['Fir']) +
-        (squad_rawdata['Thr'])) / 3
+        (squad_rawdata['Thr'])) / 3 # 1 * 3
         )
 
     squad_rawdata['sk'] = (((squad_rawdata['sk_green']) + (squad_rawdata['sk_blue']) + (squad_rawdata['sk_white'])) / 3)
@@ -91,23 +94,23 @@ def analyze_file(input_file_path):
 
     # Wing Back Scores
     squad_rawdata['wb_green'] = ((
-        (squad_rawdata['OtB'] * 5) +
-        (squad_rawdata['Wor'] * 5) +
-        (squad_rawdata['Acc'] * 5) +
-        (squad_rawdata['Pac'] * 5) +
-        (squad_rawdata['Sta'] * 5)) / 25
+        (squad_rawdata['OtB'] * weight_key) +
+        (squad_rawdata['Wor'] * weight_key) +
+        (squad_rawdata['Acc'] * weight_key) +
+        (squad_rawdata['Pac'] * weight_key) +
+        (squad_rawdata['Sta'] * weight_key)) / 25 # 5 * 5
         )
 
     squad_rawdata['wb_blue'] = ((
-        (squad_rawdata['Dri'] * 2.5) +
-        (squad_rawdata['Mar'] * 2.5) +
-        (squad_rawdata['Pas'] * 2.5) +
-        (squad_rawdata['Tck'] * 2.5) +
-        (squad_rawdata['Tec'] * 2.5) +
-        (squad_rawdata['Ant'] * 2.5) +
-        (squad_rawdata['Cnt'] * 2.5) +
-        (squad_rawdata['Dec'] * 2.5) +
-        (squad_rawdata['Agi'] * 2.5)) / 22.5
+        (squad_rawdata['Dri'] * weight_pref) +
+        (squad_rawdata['Mar'] * weight_pref) +
+        (squad_rawdata['Pas'] * weight_pref) +
+        (squad_rawdata['Tck'] * weight_pref) +
+        (squad_rawdata['Tec'] * weight_pref) +
+        (squad_rawdata['Ant'] * weight_pref) +
+        (squad_rawdata['Cnt'] * weight_pref) +
+        (squad_rawdata['Dec'] * weight_pref) +
+        (squad_rawdata['Agi'] * weight_pref)) / 22.5 # 2.5 * 9
         )
 
     squad_rawdata['wb_white'] = ((
@@ -115,7 +118,7 @@ def analyze_file(input_file_path):
         (squad_rawdata['Pos']) +
         (squad_rawdata['Tea']) +
         (squad_rawdata['Fir']) +
-        (squad_rawdata['Bal'])) / 6
+        (squad_rawdata['Bal'])) / 5 # 5 * 1
         )
 
     squad_rawdata['wb'] = (((squad_rawdata['wb_green']) + (squad_rawdata['wb_blue']) + (squad_rawdata['wb_white'])) / 3)
@@ -123,26 +126,26 @@ def analyze_file(input_file_path):
 
     # Central Defender on Defend Score
     squad_rawdata['cd_green'] = ((
-        (squad_rawdata['Acc'] * 5) +
-        (squad_rawdata['Pac'] * 5) +
-        (squad_rawdata['Cmp'] * 5) +
-        (squad_rawdata['Jum'] * 5)) / 20
+        (squad_rawdata['Acc'] * weight_key) +
+        (squad_rawdata['Pac'] * weight_key) +
+        (squad_rawdata['Cmp'] * weight_key) +
+        (squad_rawdata['Jum'] * weight_key)) / 20 # 5 * 4
         )
 
     squad_rawdata['cd_blue'] = ((
-        (squad_rawdata['Hea'] * 2.5) +
-        (squad_rawdata['Mar'] * 2.5) +
-        (squad_rawdata['Tck'] * 2.5) +
-        (squad_rawdata['Agg'] * 2.5) +
-        (squad_rawdata['Ant'] * 2.5) +
-        (squad_rawdata['Cnt'] * 2.5) +
-        (squad_rawdata['Pos'] * 2.5) +
-        (squad_rawdata['Dec'] * 2.5)) / 20
+        (squad_rawdata['Hea'] * weight_pref) +
+        (squad_rawdata['Mar'] * weight_pref) +
+        (squad_rawdata['Tck'] * weight_pref) +
+        (squad_rawdata['Agg'] * weight_pref) +
+        (squad_rawdata['Ant'] * weight_pref) +
+        (squad_rawdata['Cnt'] * weight_pref) +
+        (squad_rawdata['Pos'] * weight_pref) +
+        (squad_rawdata['Dec'] * weight_pref)) / 20 # 2.5 * 8
         )
 
     squad_rawdata['cd_white'] = ((
         (squad_rawdata['Bra']) +
-        (squad_rawdata['Str'])) / 2
+        (squad_rawdata['Str'])) / 2 # 1 * 2
         )
 
     squad_rawdata['cd'] = (((squad_rawdata['cd_green']) + (squad_rawdata['cd_blue']) + (squad_rawdata['cd_white'])) / 3)
@@ -150,23 +153,23 @@ def analyze_file(input_file_path):
 
     # DM Score
     squad_rawdata['dm_green'] = ((
-        (squad_rawdata['Wor'] * 5) +
-        (squad_rawdata['Sta'] * 5) +
-        (squad_rawdata['Pac'] * 5) +
-        (squad_rawdata['Pas'] * 5) +
-        (squad_rawdata['Vis'] * 5) +
-        (squad_rawdata['Dec'] * 5) +
-        (squad_rawdata['Cmp'] * 5)) / 35
+        (squad_rawdata['Wor'] * weight_key) +
+        (squad_rawdata['Sta'] * weight_key) +
+        (squad_rawdata['Pac'] * weight_key) +
+        (squad_rawdata['Pas'] * weight_key) +
+        (squad_rawdata['Vis'] * weight_key) +
+        (squad_rawdata['Dec'] * weight_key) +
+        (squad_rawdata['Cmp'] * weight_key)) / 35 # 5 * 7
         )
 
     squad_rawdata['dm_blue'] = ((
-        (squad_rawdata['Ant'] * 2.5) +
-        (squad_rawdata['OtB'] * 2.5) +
-        (squad_rawdata['Fir'] * 2.5) +
-        (squad_rawdata['Tec'] * 2.5) +
-        (squad_rawdata['Cnt'] * 2.5) +
-        (squad_rawdata['Acc'] * 2.5) +
-        (squad_rawdata['Pos'] * 2.5)) / 17.5
+        (squad_rawdata['Ant'] * weight_pref) +
+        (squad_rawdata['OtB'] * weight_pref) +
+        (squad_rawdata['Fir'] * weight_pref) +
+        (squad_rawdata['Tec'] * weight_pref) +
+        (squad_rawdata['Cnt'] * weight_pref) +
+        (squad_rawdata['Acc'] * weight_pref) +
+        (squad_rawdata['Pos'] * weight_pref)) / 17.5 # 2.5 * 7
         )
 
     squad_rawdata['dm_white'] = ((
@@ -177,7 +180,7 @@ def analyze_file(input_file_path):
         (squad_rawdata['Lon']) +
         (squad_rawdata['Tck']) +
         (squad_rawdata['Fla']) +
-        (squad_rawdata['Agi'])) / 8
+        (squad_rawdata['Agi'])) / 8 # 8 * 1
         )
 
     squad_rawdata['dm'] = (((squad_rawdata['dm_green']) + (squad_rawdata['dm_blue']) + (squad_rawdata['dm_white'])) / 3)
@@ -185,19 +188,19 @@ def analyze_file(input_file_path):
 
     # Winger Score
     squad_rawdata['w_green'] = ((
-        (squad_rawdata['Acc'] * 5) +
-        (squad_rawdata['Pac'] * 5) +
-        (squad_rawdata['Sta'] * 5) +
-        (squad_rawdata['Wor'] * 5) +
-        (squad_rawdata['Cro'] * 5) +
-        (squad_rawdata['Dri'] * 5)) / 30
+        (squad_rawdata['Acc'] * weight_key) +
+        (squad_rawdata['Pac'] * weight_key) +
+        (squad_rawdata['Sta'] * weight_key) +
+        (squad_rawdata['Wor'] * weight_key) +
+        (squad_rawdata['Cro'] * weight_key) +
+        (squad_rawdata['Dri'] * weight_key)) / 30 # 5 * 6
         )
 
     squad_rawdata['w_blue'] = ((
-        (squad_rawdata['Tec'] * 2.5) +
-        (squad_rawdata['Agi'] * 2.5) +
-        (squad_rawdata['OtB'] * 2.5) +
-        (squad_rawdata['Pas'] * 2.5)) / 10
+        (squad_rawdata['Tec'] * weight_pref) +
+        (squad_rawdata['Agi'] * weight_pref) +
+        (squad_rawdata['OtB'] * weight_pref) +
+        (squad_rawdata['Pas'] * weight_pref)) / 10 # 2.5 * 4
         )
 
     squad_rawdata['w_white'] = ((
@@ -207,7 +210,7 @@ def analyze_file(input_file_path):
         (squad_rawdata['Vis']) +
         (squad_rawdata['Ant']) +
         (squad_rawdata['Cnt']) +
-        (squad_rawdata['Agg'])) / 7
+        (squad_rawdata['Agg'])) / 7 # 7 * 1
         )
 
     squad_rawdata['w'] = (((squad_rawdata['w_green']) + (squad_rawdata['w_blue']) + (squad_rawdata['w_white'])) / 3)
@@ -215,21 +218,21 @@ def analyze_file(input_file_path):
 
     # Advanced Playmaker Score
     squad_rawdata['ap_green'] = ((
-        (squad_rawdata['Acc'] * 5) +
-        (squad_rawdata['Pac'] * 5) +
-        (squad_rawdata['Sta'] * 5) +
-        (squad_rawdata['Wor'] * 5) +
-        (squad_rawdata['Cmp'] * 5) +
-        (squad_rawdata['Dec'] * 5) +
-        (squad_rawdata['Pas'] * 5) +
-        (squad_rawdata['Ant'] * 5)) / 40
+        (squad_rawdata['Acc'] * weight_key) +
+        (squad_rawdata['Pac'] * weight_key) +
+        (squad_rawdata['Sta'] * weight_key) +
+        (squad_rawdata['Wor'] * weight_key) +
+        (squad_rawdata['Cmp'] * weight_key) +
+        (squad_rawdata['Dec'] * weight_key) +
+        (squad_rawdata['Pas'] * weight_key) +
+        (squad_rawdata['Ant'] * weight_key)) / 40 # 5 * 8
         )
 
     squad_rawdata['ap_blue'] = ((
-        (squad_rawdata['Dri'] * 2.5) +
-        (squad_rawdata['Fir'] * 2.5) +
-        (squad_rawdata['Fla'] * 2.5) +
-        (squad_rawdata['Tec'] * 2.5)) / 10
+        (squad_rawdata['Dri'] * weight_pref) +
+        (squad_rawdata['Fir'] * weight_pref) +
+        (squad_rawdata['Fla'] * weight_pref) +
+        (squad_rawdata['Tec'] * weight_pref)) / 10 # 2.5 * 4
         )
 
     squad_rawdata['ap_white'] = ((
@@ -238,7 +241,7 @@ def analyze_file(input_file_path):
         (squad_rawdata['Fin']) +
         (squad_rawdata['Vis']) +
         (squad_rawdata['Tea']) +
-        (squad_rawdata['OtB'])) / 6
+        (squad_rawdata['OtB'])) / 6 # 6 * 1
         )
 
     squad_rawdata['ap'] = (((squad_rawdata['ap_green']) + (squad_rawdata['ap_blue']) + (squad_rawdata['ap_white'])) / 3)
@@ -246,22 +249,22 @@ def analyze_file(input_file_path):
 
     # Pressing Forward on Attack Score
     squad_rawdata['pf_green'] = ((
-        (squad_rawdata['Acc'] * 5) +
-        (squad_rawdata['Dri'] * 5) +
-        (squad_rawdata['Pac'] * 5) +
-        (squad_rawdata['Cmp'] * 5) +
-        (squad_rawdata['Fin'] * 5) +
-        (squad_rawdata['Wor'] * 5) +   
-        (squad_rawdata['Sta'] * 5)) / 35
+        (squad_rawdata['Acc'] * weight_key) +
+        (squad_rawdata['Dri'] * weight_key) +
+        (squad_rawdata['Pac'] * weight_key) +
+        (squad_rawdata['Cmp'] * weight_key) +
+        (squad_rawdata['Fin'] * weight_key) +
+        (squad_rawdata['Wor'] * weight_key) +   
+        (squad_rawdata['Sta'] * weight_key)) / 35 # 5 * 7
         )
 
     squad_rawdata['pf_blue'] = ((
-        (squad_rawdata['Fir'] * 2.5) +
-        (squad_rawdata['Agg'] * 2.5) +
-        (squad_rawdata['Ant'] * 2.5) +
-        (squad_rawdata['Dec'] * 2.5) +
-        (squad_rawdata['OtB'] * 2.5) +
-        (squad_rawdata['Bal'] * 2.5)) / 15
+        (squad_rawdata['Fir'] * weight_pref) +
+        (squad_rawdata['Agg'] * weight_pref) +
+        (squad_rawdata['Ant'] * weight_pref) +
+        (squad_rawdata['Dec'] * weight_pref) +
+        (squad_rawdata['OtB'] * weight_pref) +
+        (squad_rawdata['Bal'] * weight_pref)) / 15 # 2.5 * 6
         )
 
     squad_rawdata['pf_white'] = ((
@@ -269,7 +272,7 @@ def analyze_file(input_file_path):
         (squad_rawdata['Cnt']) +
         (squad_rawdata['Tea']) + 
         (squad_rawdata['Str']) +
-        (squad_rawdata['Agi'])) / 5
+        (squad_rawdata['Agi'])) / 5 # 5 * 1
         )
 
     squad_rawdata['pf'] = (((squad_rawdata['pf_green']) + (squad_rawdata['pf_blue']) + (squad_rawdata['pf_white'])) / 3)
