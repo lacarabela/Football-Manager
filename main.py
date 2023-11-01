@@ -1,8 +1,9 @@
 import pandas as pd
 import os
 import uuid
-from tkinter import filedialog
 import tkinter as tk
+from tkinter import filedialog
+from tkinter import ttk
 import webbrowser
 
 def generate_html(dataframe: pd.DataFrame):
@@ -300,28 +301,40 @@ def analyze_file(input_file_path):
 def close_window():
     root.destroy()
 
+colors = {
+    "bg": "#3D30A2",
+    "secondary_bg": "#F7EFE5",
+    "accent": "#7743DB",
+}
+
 # Creating main window
 root = tk.Tk()
 root.title("FM24 Analysis Tool")
-
-# Window size
 root.geometry("800x600")
 root.resizable(False, False)
+root.configure(background=colors["bg"])
 
-frame = tk.Frame(root)
+style = ttk.Style()
+style.configure('TButton', background=colors["accent"], foreground='black', bordercolor=colors["accent"], font=('Arial', 12, 'bold'))
+style.configure('TLabel', background=colors["secondary_bg"], foreground=colors["accent"], font=('Arial', 12))
+style.configure('TFrame', background=colors["bg"])
+
+frame = ttk.Frame(root, padding="20", style='TFrame')
 frame.place(relx=0.5, rely=0.5, anchor="center")  # This will center the frame in the window
 
-label = tk.Label(frame, text="")
+label = ttk.Label(frame, text="", style='TLabel')
 label.grid(row=0, column=0, pady=10, sticky="nsew")
 
 # Make browse_button a child of frame
-browse_button = tk.Button(frame, text="Browse HTML File", command=browse_file)
+browse_button = ttk.Button(frame, text="Browse HTML File", command=browse_file, style='TButton')
 browse_button.grid(row=1, column=0) 
 
-bottom_frame = tk.Frame(root)
+# Making sure exit button is centered and at the bottom 
+bottom_frame = ttk.Frame(root, style='TFrame')
 bottom_frame.pack(side=tk.BOTTOM,  fill=tk.X, pady=10)
 
-exit_button = tk.Button(bottom_frame, text="EXIT", command=close_window)
+# Exit button creation
+exit_button = ttk.Button(bottom_frame, text="EXIT", command=close_window, style='TButton')
 exit_button.pack(side=tk.BOTTOM, pady=5)
 
 root.mainloop()
