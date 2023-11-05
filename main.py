@@ -6,6 +6,7 @@ import tkinter as tk
 from tkinter import filedialog, ttk
 import webbrowser
 
+# https://thepythoncode.com/code/convert-pandas-dataframe-to-html-table-python
 def generate_html(dataframe: pd.DataFrame):
     table_html = dataframe.to_html(table_id="table", index=False)
 
@@ -52,6 +53,7 @@ def browse_file():
 def analyze_file(input_file_path):
     weight_key = 5 # stats in which are key to a specific position
     weight_pref = 2.5 # preferred stats which are not unimportant but not key for a position 
+    weight_normal = 1 
 
     # Read html squad file
     squad_rawdata_list = pd.read_html(input_file_path, header=0, encoding="utf-8", keep_default_na=False)
@@ -59,7 +61,6 @@ def analyze_file(input_file_path):
     # Turning squad rawdata from a list to a dataframe
     squad_rawdata = squad_rawdata_list[0]
 
-    # calculating scores for 4-2-3-1 Gengen Press
     # Sweeper Keeper on Defend Score
     squad_rawdata['sk_green'] = ((
         (squad_rawdata['Ref'] * weight_key) +
@@ -284,8 +285,11 @@ def analyze_file(input_file_path):
 
     squad_rawdata
 
-    squad = squad_rawdata[['Inf','Name','Age','Club','Transfer Value','Salary','Nat','Position','Personality','Media Handling','Left Foot', 'Right Foot','Speed','Jum','Str','WorkRate','Height','sk','cd','wb','dm','ap','w','pf']]
+    squad_data = squad_rawdata[['Inf','Name','Age','Club','Transfer Value','Salary','Nat','Position','Personality','Media Handling','Left Foot', 'Right Foot','Speed','Jum','Str','WorkRate','Height','sk','cd','wb','dm','ap','w','pf']]
 
+    return save_and_output_results(squad_data)
+
+def save_and_output_results(squad_data):
     results_directory = "Results"
     if not os.path.exists(results_directory):
         os.makedirs(results_directory)
@@ -293,7 +297,7 @@ def analyze_file(input_file_path):
     # Creating and randomizing the title of the final viewable html file
     filename = str(uuid.uuid4()) + ".html"
     filepath = os.path.join(results_directory, filename)
-    html = generate_html(squad)
+    html = generate_html(squad_data)
     open(filepath, "w", encoding="utf-8").write(html)
     print(f"Analysis results saved to {filepath}")
     return filepath
