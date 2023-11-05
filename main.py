@@ -1,9 +1,9 @@
 import pandas as pd
 import os
 import uuid
+import webbrowser
 import tkinter as tk
-from tkinter import filedialog
-from tkinter import ttk
+from tkinter import filedialog, ttk
 import webbrowser
 
 def generate_html(dataframe: pd.DataFrame):
