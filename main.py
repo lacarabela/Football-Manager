@@ -45,7 +45,7 @@ def browse_file():
             if result_filepath:
                 print("opening Result")
                 tk.messagebox.showinfo("Analysis Completed", f"Analysis results saved to:\n{result_filepath}")
-                webbrowser.open(file_path)
+                webbrowser.open(result_filepath)
             else:
                 print("no result filepath")
                 print(result_filepath)
