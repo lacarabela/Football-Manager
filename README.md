@@ -1,1 +1,7 @@
-# Football-Manager
+# Football Manager Squad/Shortlist Analysis Tool
+
+## Usage 
+
+## Acknowledgement
+
+## 
