@@ -1,7 +1,9 @@
 # Football Manager Squad/Shortlist Analysis Tool
 
-## Usage 
+## Installation
+
+## Usage
+
+## License
 
 ## Acknowledgement
-
-## 
