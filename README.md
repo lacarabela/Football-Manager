@@ -1,6 +1,6 @@
 # Football Manager Squad/Shortlist Analysis Tool
 
-## Usage 
+## How to use
 
 ## Acknowledgement
 
