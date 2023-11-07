@@ -5,7 +5,7 @@ import webbrowser
 import tkinter as tk
 from tkinter import filedialog, ttk
 
-# https://thepythoncode.com/code/convert-pandas-dataframe-to-html-table-python
+# sourced from https://thepythoncode.com/code/convert-pandas-dataframe-to-html-table-python
 def generate_html(dataframe: pd.DataFrame):
     table_html = dataframe.to_html(table_id="table", index=False)
 
@@ -33,6 +33,7 @@ def generate_html(dataframe: pd.DataFrame):
 
     return html
 
+# allows user to browse and select an HTML file for analysis
 def browse_file():
     file_path = filedialog.askopenfilename(title="Select HTML File", filetypes=[("HTML Files", "*.html")])
     if file_path:
@@ -49,6 +50,7 @@ def browse_file():
                 print("no result filepath")
                 print(result_filepath)
 
+# computes weighted scores for given position in a DataFrame using the given weight for a specific attribute in the role
 def calculate_score(df, stats, weight):
     score = sum(df[stats] *  weight for stats, weight in zip(stats, weight)) / (sum(weight))
     return score.round(1)
@@ -60,37 +62,45 @@ def analyze_file(input_file_path):
 
     squad_rawdata = pd.read_html(input_file_path, header=0, encoding="utf-8", keep_default_na=False)[0]
 
+# identifying attributes which contribute the most to a specific player at a given position on the field, they are separated by three weight categories: key, preferred, and normal
     role_definitions = {
+        # sweeper keeper attributes
         'sk' : {
             'key_stats' : ['Ref', 'Agi'],
             'preferred_stats' : ['Acc', 'Aer', 'Han', 'Cmd', 'Kic', '1v1', 'Pas', 'TRO', 'Ant', 'Cmp', 'Cnt', 'Dec', 'Pos', 'Vis'],
             'normal_stats' : ['Cmp', 'Fir', 'Thr']
         },
+        # wing back attributes
         'wb' : {
             'key_stats' : ['OtB', 'Wor', 'Acc', 'Pac', 'Sta'],
             'preferred_stats' : ['Dri', 'Mar', 'Pas', 'Tck', 'Tec', 'Ant', 'Cnt', 'Dec', 'Agi'],
             'normal_stats' : ['Cro', 'Pos', 'Tea', 'Fir', 'Bal']
         },
+        # central defender attributes
         'cd' : {
             'key_stats' : ['Acc', 'Pac', 'Cmp', 'Jum'],
             'preferred_stats' : ['Hea', 'Mar', 'Tck', 'Agg', 'Ant', 'Cnt', 'Pos', 'Dec'],
             'normal_stats' : ['Bra', 'Str']
         },
+        # defensive midfielder attributes
         'dm' : {
             'key_stats' : ['Wor', 'Sta', 'Pac', 'Pas', 'Vis', 'Dec', 'Cmp'],
             'preferred_stats' : ['Ant', 'OtB', 'Fir', 'Tec', 'Cnt', 'Acc', 'Pos'],
             'normal_stats' : ['Tea', 'Bal', 'Str', 'Dri', 'Lon', 'Tck', 'Fla', 'Agi']
         },
+        # winger attributes
         'w' : {
             'key_stats' : ['Acc', 'Pac', 'Sta', 'Wor', 'Cro', 'Dri'],
             'preferred_stats' : ['Tec', 'Agi', 'OtB', 'Pas'],
             'normal_stats' : ['Fir', 'Bal', 'Pos', 'Vis', 'Ant', 'Cnt', 'Agg']
         },
+        # advanced playmaker attributes
         'ap' : {
             'key_stats' : ['Acc', 'Pac', 'Sta', 'Wor', 'Cmp', 'Dec', 'Pas', 'Ant'],
             'preferred_stats' : ['Dri', 'Fir', 'Fla', 'Tec'],
             'normal_stats' : ['Agi', 'Agg', 'Fin', 'Vis', 'Tea', 'OtB']
         },
+        # pressing forward attributes
         'pf' : {
             'key_stats' : ['Acc', 'Dri', 'Pac', 'Cmp', 'Fin', 'Wor', 'Sta'],
             'preferred_stats' : ['Fir', 'Agg', 'Ant', 'Dec', 'OtB', 'Bal'],
@@ -135,6 +145,7 @@ def save_and_output_results(squad_data):
 def close_window():
     root.destroy()
 
+# color scheme
 colors = {
     "bg": "#3D30A2",
     "secondary_bg": "#F7EFE5",
@@ -148,18 +159,21 @@ root.geometry("800x600")
 root.resizable(False, False)
 root.configure(background=colors["bg"])
 
+# styling configuration for ttk elements
 style = ttk.Style()
 style.configure('TButton', background=colors["accent"], foreground='black', bordercolor=colors["accent"], font=('Arial', 12, 'bold'))
 style.configure('TLabel', background=colors["secondary_bg"], foreground=colors["accent"], font=('Arial', 12))
 style.configure('TFrame', background=colors["bg"])
 
+# frame for content organization
 frame = ttk.Frame(root, padding="20", style='TFrame')
 frame.place(relx=0.5, rely=0.5, anchor="center")  # This will center the frame in the window
 
+# label for displaying file information
 label = ttk.Label(frame, text="", style='TLabel')
 label.grid(row=0, column=0, pady=10, sticky="nsew")
 
-# Make browse_button a child of frame
+# button addition to allow fro browsing file
 browse_button = ttk.Button(frame, text="Browse HTML File", command=browse_file, style='TButton')
 browse_button.grid(row=1, column=0) 
 
@@ -167,7 +181,7 @@ browse_button.grid(row=1, column=0)
 bottom_frame = ttk.Frame(root, style='TFrame')
 bottom_frame.pack(side=tk.BOTTOM,  fill=tk.X, pady=10)
 
-# Exit button creation
+# Exit button creation at bottom of frame
 exit_button = ttk.Button(bottom_frame, text="EXIT", command=close_window, style='TButton')
 exit_button.pack(side=tk.BOTTOM, pady=5)
 
