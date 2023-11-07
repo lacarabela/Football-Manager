@@ -4,7 +4,6 @@ import uuid
 import webbrowser
 import tkinter as tk
 from tkinter import filedialog, ttk
-import webbrowser
 
 # https://thepythoncode.com/code/convert-pandas-dataframe-to-html-table-python
 def generate_html(dataframe: pd.DataFrame):
