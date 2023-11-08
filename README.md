@@ -22,7 +22,7 @@ The views that will be imported can be found in the folder named 'FM Views'
 
 ### Applying the Views 
 
-![](https://github.com/lacarabela/Football-Manager/blob/main/View%20Import.gif)
+![](https://github.com/lacarabela/Football-Manager/blob/main/FM_views/view_import_squad.gif)
 
 ## Usage
 
