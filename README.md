@@ -34,4 +34,8 @@ Applying view to Shortlist:
 
 ## License
 
+This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details.
+
 ## Acknowledgement
+
+This project was inspired by the video tutorial ["How to Analyze Your Football Manager Squad"](https://www.youtube.com/watch?v=hnAuOakqR90) by Squirrel_plays on YouTube. A special shoutout to them for the idea and for providing a foundation upon which this tool was built upon.
