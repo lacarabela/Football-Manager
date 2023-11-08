@@ -9,11 +9,20 @@ After installing Python, download the source code for the Football Manager Squad
 
 To install the necessary Python Packages, follow these steps.
 
-1. Open  the folder containing the downloaded source code.
-2. Move to the folder setup_files, and double-click on the 'setup.bat' if you are on a windows os or 'setup.sh' if you are on a unix based os like Mac.
+1. Open the folder containing the downloaded source code.
+2. Move to the folder 'setup_files', and double-click on the 'setup.bat' if you are on a Windows OS or 'setup.sh' if you are on a Unix-based OS like Mac.
 3. Follow any on-screen prompts to complete the installation if necessary.
 
 The setup scripts should automatically install the needed packages for the application to function correctly.
+
+## Downloading and Importing Custom Views
+
+To ensure you extract the correct data from Football Manager for use with this tool, please make sure you have downloaded the source code. 
+The views that will be imported can be found in the folder named 'FM Views'
+
+### Applying the Views 
+
+![](https://github.com/lacarabela/Football-Manager/blob/main/View%20Import.gif)
 
 ## Usage
 
