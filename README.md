@@ -18,7 +18,7 @@ The setup scripts should automatically install the needed packages for the appli
 ## Downloading and Importing Custom Views
 
 To ensure you extract the correct data from Football Manager for use with this tool, please make sure you have downloaded the source code. 
-The views that will be imported can be found in the folder named 'FM Views'
+The views that will be imported can be found in the folder named 'FM_views'
 
 ### Applying the Views 
 
@@ -28,7 +28,7 @@ Applying view to squad list:
 
 Applying view to Shortlist:
 
-
+![](https://github.com/lacarabela/Football-Manager/blob/main/FM_views/view_import_shortlist.gif)
 
 ## Usage
 
