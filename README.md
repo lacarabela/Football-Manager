@@ -39,3 +39,8 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 ## Acknowledgement
 
 This project was inspired by the video tutorial ["How to Analyze Your Football Manager Squad"](https://www.youtube.com/watch?v=hnAuOakqR90) by Squirrel_plays on YouTube. A special shoutout to them for the idea and for providing a foundation upon which this tool was built upon.
+
+The `generate_html` function used in this project to convert pandas DataFrames to HTML tables was sourced from [x4nth055's GitHub repository](https://github.com/x4nth055/pythoncode-tutorials/tree/master/general/dataframe-to-html).
+
+Third-Party Libraries Used:
+- [Pandas](https://pandas.pydata.org/)
