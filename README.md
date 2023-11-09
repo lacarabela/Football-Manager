@@ -1,5 +1,9 @@
 # Football Manager Squad/Shortlist Analysis Tool
 
+The Football Manager Squad/Shortlist Analysis Tool is an application for Football Manager that allows users to effectively analyze their squads' capabilities, as well as potential players to add to their squad. By importing squad and shortlist data into the tool, users can gain valuable insights into player statistics, performances, and a player's suitability for specific positions.
+
+Built with the Python programming language and leveraging the data processing power of Pandas, this tool transforms raw Football Manager export data into informative HTML tables. Whether you are looking to optimize your team selection, scout for new talent, or enjoy the data-driven aspects of Football Manager, this tool can help elevate your managerial skills.
+
 ## Installation
 
 Before running the application, ensure you have Python installed on your system. 
@@ -31,6 +35,22 @@ Applying view to Shortlist:
 ![](https://github.com/lacarabela/Football-Manager/blob/main/FM_views/view_import_shortlist.gif)
 
 ## Usage
+
+### Preparing Data for Analysis
+
+Before you can analyze your squad and shortlist with the Football Manager Squad/Shortlist Analysis Tool, you need to export the data from Football Manager into an HTML file. Follow these steps to prepare your data:
+
+1. In Football Manager, navigate to the squad or shortlist you wish to analyze.
+2. Select all the players you want to include in the analysis, or you could simply use `Ctrl+A` to select all the players.
+3. Press `Ctrl+P` to open the print options.
+4. Choose to 'Print as a web page' or similar option to generate an HTML file.
+5. Save the generated HTML file in a folder that you can easily access later.
+
+![](https://github.com/lacarabela/Football-Manager/blob/main/html_files_analyze/downloading_squad_rawdata.gif)
+
+
+### Using the Tool
+
 
 ## License
 
