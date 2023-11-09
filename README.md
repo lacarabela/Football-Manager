@@ -65,3 +65,13 @@ The `generate_html` function used in this project to convert pandas DataFrames t
 
 Third-Party Libraries Used:
 - [Pandas](https://pandas.pydata.org/)
+
+## Future Plans
+
+- **Generalization for All Playing Positions:** I plan to generalize the tool's analytical capabilities to accommodate all playing positions within Football Manager. This will allow for a more versatile analysis that is not limited to specific roles on the pitch.
+
+- **Attribute System Enhancement:** By refining the attribute analysis system, we aim to offer a more nuanced and precise evaluation of a player's skills and suitability for various roles, enhancing the tool's utility in squad management and player assessment.
+
+- **Graphical User Interface (GUI) Improvements:** I plan to overhaul the GUI for ease of use, better navigation, and a more aesthetically pleasing design.
+
+- **Creating a Standalone Executable:** To reach a wider audience and facilitate ease of access, I hope to package the tool as a distributable executable, eliminating the need for a separate Python environment or dependency installation.
