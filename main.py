@@ -130,9 +130,11 @@ def analyze_file(input_file_path):
     return save_and_output_results(squad_data)
 
 def save_and_output_results(squad_data):
-    results_directory = "Results"
-    if not os.path.exists(results_directory):
-        os.makedirs(results_directory)
+    results_directory = filedialog.askdirectory(title="Select a directory to save the results")
+    if not results_directory:
+        tk.messagebox.showwarning("Warning", "No directory selected. The application will now close.")
+        root.quit()  
+        return None
 
     # Creating and randomizing the title of the final viewable html file
     filename = str(uuid.uuid4()) + ".html"
