@@ -28,11 +28,11 @@ The views that will be imported can be found in the folder named 'FM_views'
 
 Applying view to squad list:
 
-![](https://github.com/lacarabela/Football-Manager/blob/main/FM_views/view_import_squad.gif)
+![](https://github.com/lacarabela/Football-Manager/blob/main/readme_extras/view_import_squad.gif)
 
 Applying view to Shortlist:
 
-![](https://github.com/lacarabela/Football-Manager/blob/main/FM_views/view_import_shortlist.gif)
+![](https://github.com/lacarabela/Football-Manager/blob/main/readme_extras/view_import_shortlist.gif)
 
 ## Usage
 
@@ -46,11 +46,12 @@ Before you can analyze your squad and shortlist with the Football Manager Squad/
 4. Choose to 'Print as a web page' or similar option to generate an HTML file.
 5. Save the generated HTML file in a folder that you can easily access later.
 
-![](https://github.com/lacarabela/Football-Manager/blob/main/html_files_analyze/downloading_squad_rawdata.gif)
+![](https://github.com/lacarabela/Football-Manager/blob/main/readme_extras/downloading_squad_rawdata.gif)
 
 
 ### Using the Tool
 
+![](https://github.com/lacarabela/Football-Manager/blob/main/readme_extras/using_tool.gif)
 
 ## License
 
