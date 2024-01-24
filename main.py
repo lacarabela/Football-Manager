@@ -7,6 +7,20 @@ from tkinter import filedialog, ttk
 
 # sourced from https://thepythoncode.com/code/convert-pandas-dataframe-to-html-table-python
 def generate_html(dataframe: pd.DataFrame):
+
+    """
+    Generates an HTML representation of the provided Pandas DataFrame. This function
+    enhances the HTML table with DataTables features for better
+    interactivity and display. Primarily used to showcase player statistics and
+    performances in a more readable and interactive format.
+
+    Args:
+    - dataframe (pd.DataFrame): The DataFrame containing Football Manager player data.
+
+    Returns:
+    - html (str): A string of HTML content, representing the DataFrame with advanced DataTables features.
+    """
+
     table_html = dataframe.to_html(table_id="table", index=False)
 
     html = f"""
@@ -35,6 +49,13 @@ def generate_html(dataframe: pd.DataFrame):
 
 # allows user to browse and select an HTML file for analysis
 def browse_file():
+
+    """
+    Initiates a file browsing dialog allowing the user to select an HTML file (usually containing squad or shortlist data from Football Manager).
+    Post-selection, the user is prompted to confirm if they wish to analyze the file. If confirmed,
+    the analysis is conducted, and the results are both displayed and optionally opened in a web browser.
+    """
+
     file_path = filedialog.askopenfilename(title="Select HTML File", filetypes=[("HTML Files", "*.html")])
     if file_path:
         analyze = tk.messagebox.askyesno("Analyze File", f"Do you want to analyze {file_path}?")
@@ -52,10 +73,36 @@ def browse_file():
 
 # computes weighted scores for given position in a DataFrame using the given weight for a specific attribute in the role
 def calculate_score(df, stats, weight):
+
+    """
+    Computes a weighted score for specific attributes in the provided DataFrame. This function is essential
+    for evaluating player suitability for different roles based on their statistics.
+
+    Args:
+    - df (pd.DataFrame): The DataFrame containing player data.
+    - stats (list): List of column names (player attributes) to be considered.
+    - weight (list): Corresponding weights for each attribute.
+
+    Returns:
+    - (float): The calculated weighted score, rounded to one decimal place.
+    """
+
     score = sum(df[stats] *  weight for stats, weight in zip(stats, weight)) / (sum(weight))
     return score.round(1)
 
 def analyze_file(input_file_path):
+
+    """
+    Conducts an in-depth analysis of Football Manager squad data. This function reads HTML data (squad/shortlist),
+    processes it, and calculates various scores to assess players' abilities in different roles.
+
+    Args:
+    - input_file_path (str): Path to the HTML file containing squad or shortlist data.
+
+    Returns:
+    - (str or None): File path of the generated analysis results in HTML format, or None if the saving process is aborted.
+    """
+
     weight_key = 5
     weight_preferred = 2.5
     weight_normal =1
@@ -130,6 +177,18 @@ def analyze_file(input_file_path):
     return save_and_output_results(squad_data)
 
 def save_and_output_results(squad_data):
+
+    """
+    Saves the processed and analyzed squad data into an HTML file for easy viewing. The user selects the directory
+    where the results will be saved. This step is crucial for users to review and make strategic decisions based on the analysis.
+
+    Args:
+    - squad_data (pd.DataFrame): DataFrame containing the analyzed squad data.
+
+    Returns:
+    - (str or None): File path of the saved HTML file or None if no directory is selected.
+    """
+
     results_directory = filedialog.askdirectory(title="Select a directory to save the results")
     if not results_directory:
         tk.messagebox.showwarning("Warning", "No directory selected. The application will now close.")
@@ -145,6 +204,12 @@ def save_and_output_results(squad_data):
     return filepath
 
 def close_window():
+
+    """
+    Closes the main application window, effectively terminating the user interface of the tool.
+    This function is tied to an exit button within the Tkinter GUI.
+    """
+
     root.destroy()
 
 # color scheme
